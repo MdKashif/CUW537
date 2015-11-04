@@ -1,0 +1,52 @@
+package AddIntLinkedLinst;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+
+public class AddIntMain {
+
+	/**
+	 * @param args
+	 * @throws Exception 
+	 */
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		
+		BufferedReader br = null;
+        Reader r = new InputStreamReader(System.in);
+        br = new BufferedReader(r);
+        String fstr = null;
+        String sstr = null;
+        String str=null;
+        LargeNumberAddition LNA;
+        
+        
+        try {
+            do{
+            	LNA = new LargeNumberAddition();
+            	System.out.println("Enter First big integer: ");
+                fstr = br.readLine();
+                
+                System.out.println("Enter First big integer: ");
+                sstr = br.readLine();
+                
+                System.out.println("Sum is : " + LNA.AddBigIntegers(fstr,sstr));
+                
+                System.out.println("Enter exit to quit: ");
+                str = br.readLine();
+                LNA=null;
+            } while (!str.equalsIgnoreCase("exit"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            try{
+                if(br != null) br.close();
+            }catch(Exception ex){}
+        }
+
+	}
+
+}
