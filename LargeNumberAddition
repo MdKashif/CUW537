@@ -1,0 +1,83 @@
+package AddIntLinkedLinst;
+
+
+public class LargeNumberAddition {
+
+	LinkedList num1;
+    LinkedList num2;
+    LinkedList ans;
+	
+	public LargeNumberAddition()
+	{
+		
+		num1 = new LinkedList();
+	    num2 = new LinkedList();
+	    ans = new LinkedList();
+		
+	}
+    public String AddBigIntegers(String snum1, String snum2) throws Exception
+	{
+		
+    	StringBuffer buff = new StringBuffer("");
+    	int x=0;
+    	
+		int l1 = snum1.length();
+		int l2 = snum2.length();        
+        
+		for (int i = l1 - 1; i >= 0; i--)
+            num1.addEnd(snum1.charAt(i) - '0');
+        
+        for (int i = l2 - 1; i >= 0; i--)
+            num2.addEnd(snum2.charAt(i) - '0');
+        
+        
+             
+        int len = l1 > l2 ? l1 : l2;
+        int carry = 0;
+        
+       		
+               
+        for (int i = 0; i < len; i++)
+        {
+            int d1 = 0, d2 = 0; 
+            
+            
+            try {
+                
+                d1 = num1.GetAtIndex(i).getPayload();
+            } 
+            catch(Exception e){}            
+            try {
+                
+                d2 = num2.GetAtIndex(i).getPayload();
+            } 
+            catch(Exception e){}                        
+             x = d1 + d2 + carry;
+            
+            //System.out.println("X :" + x); 
+             
+            ans.addFront(x % 10);
+            carry = x / 10;
+        }
+        
+        while (carry != 0)
+        {
+            
+        	//System.out.println("Carry : " + carry);
+        	ans.addFront(carry % 10);
+            carry /= 10;
+        }
+        
+        
+        
+       for (int i =0; i< ans.getCount(); i++)
+    	   	buff.append(ans.GetAtIndex(i).getPayload());
+    
+        	
+        	
+        //System.out.println("Sum: " + buff.toString());	
+        
+        return buff.toString();        
+ 				
+	}
+}
